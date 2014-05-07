@@ -57,6 +57,9 @@ public class WordCount {
 
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
+		
+		// compress output.
+		conf.setBoolean("mapred.output.compress", true);
 
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
